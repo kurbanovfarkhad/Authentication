@@ -1,0 +1,21 @@
+{{>top}}
+<div class="addBook">
+    <form id="add">
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input name="title" type="text" class="form-control" id="title" placeholder="title">
+        </div>
+        <div class="form-group">
+            <label for="description">Discription</label>
+            <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="picture">file input</label>
+            <input name="picture" type="file" class="form-control-file" id="picture">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<script src="/static/javascripts/add.js"></script>
+{{>footer}}

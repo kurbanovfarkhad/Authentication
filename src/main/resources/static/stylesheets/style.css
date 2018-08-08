@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(/static/image/bg.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+}
+.form{
+    background: rgba(255, 255, 255, 0.6);
+    background-size: cover;
+    border-radius: 3%; position: absolute;
+    top: 20%;
+    display: flex;
+    justify-content: space-around;
+    padding: 2%;
+}
+.login input{
+    background-color:rgba(0, 0, 0, 1);
+    color: #fff;
+}
+.error{
+    border: 1px solid red;
+}

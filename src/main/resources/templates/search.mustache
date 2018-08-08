@@ -1,0 +1,23 @@
+{{>top}}
+
+<div id="body">
+    {{#error}}<h1>{{error}}</h1>{{/error}}
+    {{#books}}
+        {{#books}}
+            <ul>
+                <li>
+                    <ul>
+                        <li>{{title}}</li>
+                        <li>{{description}}</li>
+                        <li>{{#picture}}<img src="/img/{{picture}}" alt="picture">{{/picture}}</li>
+                        <li><a href="/delete?id={{id}}">delete</a></li>
+                    </ul>
+                </li>
+            </ul>
+        {{/books}}
+    {{/books}}
+</div>
+<a id="first">first</a>
+
+<br>
+{{>footer}}
