@@ -1,0 +1,12 @@
+{{>top}}
+    <div class="col-md-6">
+        <div class="book">
+            <div class="row">{{#picture}}<img class="img" src="/img/{{book.picture}}" alt="picture">{{/picture}}</div>
+            <div class="row">{{book.title}}</div>
+            <div class="row">{{book.description}}</div>
+            <div class="row">
+                <a href="/delete?id={{book.id}}">delete</a><a href="/edit/{{book.id}}">delete</a>
+            </div>
+        </div>
+    </div>
+{{>footer}}

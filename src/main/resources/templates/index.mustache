@@ -1,6 +1,13 @@
 {{>top}}
-
-
-
-<br>
+        <div class="col-md-6">
+            <div class="books">
+                {{#books}}
+                    <div class="cardBook">
+                        <div class="row">{{#picture}}<img class = "img" src="/img/{{picture}}" alt="picture">{{/picture}}</div>
+                        <div class="row"><a href="/book/{{id}}">{{title}}</a></div>
+                        <div class="row">{{description}}</div>
+                    </div>
+                {{/books}}
+            </div>
+        </div>
 {{>footer}}

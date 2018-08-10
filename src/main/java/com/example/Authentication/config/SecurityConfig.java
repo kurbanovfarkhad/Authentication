@@ -25,8 +25,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 auth
                         .authorizeRequests()
                         .antMatchers("/img/**","/static/**","/webjars/**","/registration","/image/**").permitAll()
-                        .antMatchers("/user","/search").access("hasAuthority('USER')")
-                        .antMatchers("/admin","/addBook").access("hasAuthority('ADMIN')")
+                        .antMatchers("/user","/search","/book").access("hasAuthority('USER')")
+                        .antMatchers("/admin","/addBook","/book").access("hasAuthority('ADMIN')")
                         .anyRequest().authenticated()
                 .and()
                         .formLogin().loginPage("/login").permitAll().and().rememberMe()

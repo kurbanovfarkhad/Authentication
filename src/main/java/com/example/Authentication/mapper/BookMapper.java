@@ -16,6 +16,7 @@ public interface BookMapper {
     String findById = "select * from book where id = #{id}";
     String findByCondition = "SELECT * FROM book WHERE title LIKE #{text}";
     String deleteBook = "DELETE from book WHERE ID = #{id}";
+    String updateBook = "UPDATE book SET picture = #{picture}, title = #{title}, description = #{description} WHERE ID = #{id}";
     @Select(allBook)
     List<Book> allBook();
 
@@ -30,6 +31,10 @@ public interface BookMapper {
 
     @Select(findByCondition)
     List<Book> findByCondition(String text);
+
     @Delete(deleteBook)
     void deleteBook(String id);
+
+    @Update(updateBook)
+    void updateBook(Book book);
 }

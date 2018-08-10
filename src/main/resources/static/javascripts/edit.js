@@ -1,31 +1,23 @@
 $(document).ready(function () {
 
-    $("#registration").submit(function (e) {
+    $("#edit").submit(function (e) {
         e.preventDefault();
-        var data={
-            username: $('#username').val(),
-            password: $('#password').val()
-        };
-        if (data.password.length<=7){
-            $("#mess").html('<b>not a long enough password</b>');
-        } else if (!data.password||!data.username) {
-            $("#mess").html('<b>BadAss</b>');
-        }else if (data.password !== $('#passwordrepeate').val()){
-            $("#mess").html('<b>BadAss</b>');
-        }
-        else{
-
+        if (!$("#title").val()) {
+            console.log("you must send this place");
+        }else if (!$("#description").val()) {
+            console.log("you must send this place");
+        }else {
+            var data = new FormData(this);
+            data.append('csrfParameter', token);
             $.ajax({
-                url:'/registration',
-                type:'POST',
-                data: JSON.stringify(data),
-                contentType:'application/json',
-                statusCode:{
-                    409:function () {
-                        $("#mess").html('<b>Логин занят</b>');
-                    },
-                    200:function(){
-                        window.location.replace('/')
+                url: $("#edit").attr("action"),
+                type: 'POST',
+                data: /*new FormData( this )*/ data,
+                processData: false,
+                contentType: false,
+                statusCode: {
+                    200: function () {
+                        console.log("successfull")
                     }
                 }
             });

@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 
 @Controller
@@ -67,6 +70,35 @@ public class BookController {
 
         return new ResponseEntity<String>("", HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/book/{id}")
+    public String book(@PathVariable("id") String id, Model model){
+        Book book = bookMapper.findById(id);
+        model.addAttribute("book", book);
+        return "book";
+    }
+    @RequestMapping(value = "/edit/{id}")
+    public String editPage(@PathVariable("id") String id, Model model){
+        Book book = bookMapper.findById(id);
+        model.addAttribute("book", book);
+        return "edit";
+    }
+
+    @RequestMapping(value = "/edit/{id}", method = RequestMethod.POST)
+    public ResponseEntity<String> edit(@PathVariable("id") String id, Model model
+    ,@RequestParam(value = "title",required = false)String title,
+                       @RequestParam(value = "description",required = false)String description,
+                       @RequestParam(value = "picture",required = false)MultipartFile file){
+        Book book = bookMapper.findById(id);
+        deleteFile(book.getPicture());
+
+        book.setDescription(description);
+        book.setTitle(title);
+        book.setPicture(addFile(file));
+        bookMapper.updateBook(book);
+        return new ResponseEntity<String>("", HttpStatus.OK);
+    }
+
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public ResponseEntity<String> delete(@RequestParam(value = "id", required = true) String id){
 

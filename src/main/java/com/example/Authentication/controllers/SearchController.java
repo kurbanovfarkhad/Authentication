@@ -20,10 +20,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Controller
-public class SearchController {
+public class SearchController{
     @Autowired
-    private BookMapper bookMapper;
-
+    BookMapper bookMapper;
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(@RequestParam(value = "page",required = false) String page, @RequestParam(value = "text",required = false)String text, Model model){
 
