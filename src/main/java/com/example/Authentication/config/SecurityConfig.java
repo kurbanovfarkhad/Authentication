@@ -21,27 +21,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity auth) throws Exception {
-//        auth.csrf().disable();
-                auth
-                        .authorizeRequests()
-                        .antMatchers("/img/**","/static/**","/webjars/**","/registration","/image/**").permitAll()
-                        .antMatchers("/user","/search","/book").access("hasAuthority('USER')")
-                        .antMatchers("/admin","/addBook","/book").access("hasAuthority('ADMIN')")
-                        .anyRequest().authenticated()
+        auth
+                .authorizeRequests()
+                .antMatchers("/img/**", "/static/**", "/webjars/**", "/registration", "/image/**", "/addtobasket"
+                        , "/search", "/book", "/basket","/").permitAll()
+                .antMatchers("/user").access("hasAuthority('USER')")
+                .antMatchers("/admin/**").access("hasAuthority('ADMIN')")
+                .anyRequest().authenticated()
                 .and()
-                        .formLogin().loginPage("/login").permitAll().and().rememberMe()
+                .formLogin().loginPage("/login").permitAll().and().rememberMe()
                 .and()
-                        .logout()
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .permitAll();
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .permitAll();
     }
+
     @Autowired
     private UserService userService;
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth

@@ -9,14 +9,14 @@ $(document).ready(function () {
             var data = new FormData(this);
             data.append('csrfParameter', token);
             $.ajax({
-                url: '/addBook',
+                url: '/admin/addBook',
                 type: 'POST',
                 data: /*new FormData( this )*/ data,
                 processData: false,
                 contentType: false,
                 statusCode: {
                     200: function () {
-                        console.log("successfull")
+                        window.location.replace('/admin/');
                     }
                 }
             });

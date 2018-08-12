@@ -17,7 +17,7 @@ $(document).ready(function () {
                 contentType: false,
                 statusCode: {
                     200: function () {
-                        console.log("successfull")
+                        window.location.replace('/admin/');
                     }
                 }
             });

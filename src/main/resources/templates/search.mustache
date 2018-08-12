@@ -1,18 +1,29 @@
 {{>top}}
-<div class="col-md-6">
-    <div id="body">
-        {{#error}}<h1>{{error}}</h1>{{/error}}
-        <div class="books">
-            {{#books}}
-                <div class="cardBook">
-                    <div class="row">{{#picture}}<img class = "img" src="/img/{{picture}}" alt="picture">{{/picture}}</div>
-                    <div class="row"><a href="/book/{{id}}">{{title}}</a></div>
+{{#books}}
+    <div class="booksInline">
+        <div class="line">
+            <div class="row">
+                <div class="col-md-2"><img src="/img/{{picture}}" alt="picture"></div>
+                <div class="col-md-8">
+                    <div class="wor"><a href="/book/{{id}}">{{title}}</a></div>
                     <div class="row">{{description}}</div>
-                    <div class="row"><li><a href="/delete?id={{id}}">delete</a></li></div>
                 </div>
-            {{/books}}
+                <div class="col-md-2">
+                    <input type="button" name="{{id}}" id="tobasket" value="Add to basket">
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
+    <style>
+        .line img{
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+{{/books}}
 {{>footer}}

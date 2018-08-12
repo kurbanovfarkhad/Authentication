@@ -1,0 +1,19 @@
+{{>top}}
+<a href="/admin/addbook">add book</a>
+<div class="books">
+    {{#books}}
+        <div class="card" style="width: 100%;">
+            {{#picture}}<img class="card-img-top" src="/img/{{picture}}" alt="Card image cap">{{/picture}}
+            <div class="card-body">
+                <h5 class="card-title">{{title}}</h5>
+                <p class="card-text">{{description}}</p>
+                <a class="btn btn-primary" href="/admin/delete?id={{id}}">Delete</a><a class="btn btn-primary"
+                                                                                      href="/admin/edit/{{id}}">Edit</a>
+            </div>
+        </div>
+    {{/books}}
+    {{^books}}
+        <h2>No news or books? i don't know... anything...</h2>
+    {{/books}}
+</div>
+{{>footer}}

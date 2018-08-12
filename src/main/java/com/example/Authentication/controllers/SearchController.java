@@ -2,9 +2,12 @@ package com.example.Authentication.controllers;
 
 import com.example.Authentication.mapper.BookMapper;
 import com.example.Authentication.model.Book;
+import com.example.Authentication.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +28,10 @@ public class SearchController{
     BookMapper bookMapper;
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(@RequestParam(value = "page",required = false) String page, @RequestParam(value = "text",required = false)String text, Model model){
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        User user = (User) authentication.getPrincipal();
+        model.addAttribute("user",user );
 
         if (text!=null) {
             text = "%" + text + "%";

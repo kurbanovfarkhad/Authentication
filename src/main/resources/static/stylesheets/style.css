@@ -13,40 +13,6 @@
     width: 100vw;
     height: 100vh;
 }
-.form{
-    background: rgba(255, 255, 255, 0.6);
-
-    border-radius: 3%; position: absolute;
-    top: 20%;
-    display: flex;
-    justify-content: center;
-    padding: 2%;
-}
-.login input{
-    background-color:rgba(0, 0, 0, 1);
-    color: #fff;
-}
-.error{
-    border: 1px solid red;
-}
-.books{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-.cardBook{
-    margin: 1%;
-    padding: 1%;
-    width: 100px;
-    height: 200px;
-}
-.img{
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100px;
-    height: 150px;
-}
 header{
     background: url(/static/image/bg.jpg);
     background-attachment: fixed;
@@ -64,3 +30,29 @@ header{
     margin: 1%;
     padding: 1%;
 }
+/*Form and login*/
+.form{
+    background: rgba(255, 255, 255, 0.6);
+
+    border-radius: 3%; position: absolute;
+    top: 20%;
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+}
+.login input{
+    background-color:rgba(0, 0, 0, 1);
+    color: #fff;
+}
+.error{
+    border: 1px solid red;
+}
+/*cards of book*/
+
+.books{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+/**/
+

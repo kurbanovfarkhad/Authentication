@@ -1,0 +1,27 @@
+{{>top}}
+
+{{#error}}
+    <h2>{{error}}</h2>
+{{/error}}
+
+{{#books}}
+    <div class="booksInline">
+        <div class="line">
+            <div class="row">
+                <div class="col-md-2"><img class="card-img-top" src="/img/{{picture}}" alt="picture"></div>
+                <div class="col-md-8">
+                    <div class="row"><a href="/book/{{id}}">{{title}}</a></div>
+                    <div class="row">{{description}}</div>
+                </div>
+                <div class="col-md-2">
+                    <input  type="button" name="{{id}}" value="Delete" id="deleteFromBasket">
+                </div>
+            </div>
+        </div>
+    </div>
+{{/books}}
+<button type="button" class="btn btn-primary btn-lg btn-block" id="ok">Send all post</button>
+
+
+
+{{>footer}}

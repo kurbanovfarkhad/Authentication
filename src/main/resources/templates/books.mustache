@@ -1,0 +1,15 @@
+<div class="books">
+    {{#books}}
+        <div class="card" style="width: 100%;">
+            <img class="card-img-top" src="/img/{{picture}}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"><a href="/book/{{id}}">{{title}}</a></h5>
+                <p class="card-text">{{description}}</p>
+                <input type="button" name="{{id}}" id="tobasket" value="Add to basket">
+            </div>
+        </div>
+    {{/books}}
+    {{^books}}
+        <h2>No news or books? i don't know... anything...</h2>
+    {{/books}}
+</div>

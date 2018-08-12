@@ -1,12 +1,13 @@
 {{>top}}
-    <div class="col-md-6">
-        <div class="book">
-            <div class="row">{{#picture}}<img class="img" src="/img/{{book.picture}}" alt="picture">{{/picture}}</div>
-            <div class="row">{{book.title}}</div>
-            <div class="row">{{book.description}}</div>
-            <div class="row">
-                <a href="/delete?id={{book.id}}">delete</a><a href="/edit/{{book.id}}">delete</a>
-            </div>
-        </div>
+
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="/img/{{book.picture}}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{book.title}}</h5>
+        <p class="card-text">{{book.description}}</p>
+        <a href="/addtobasket" class="btn btn-primary">Add to basket</a>
+        <input type="button" name="{{book.id}}" id="tobasket" value="Add to basket">
     </div>
+</div>
+
 {{>footer}}
